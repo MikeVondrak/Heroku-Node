@@ -1,0 +1,27 @@
+{
+  "name": "heroku-node",
+  "version": "1.0.0",
+  "description": "Heroku Node Test Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikeVondrak/heroku-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikeVondrak/heroku-node/issues"
+  },
+  "homepage": "https://github.com/MikeVondrak/heroku-node#readme",
+  "dependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.27",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
