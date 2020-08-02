@@ -10,10 +10,13 @@ const angular_dist_location = path.join(__dirname, angular_app_location);
 
 const angular_assets_location = '../../src/assets'; /** @TODO more consistent locations / file structure */
 
+
+app.use(express.static(angular_dist_location));
+
 const angularAppResponse: RequestHandler = (req: Request, res: Response) => {
-  console.log('NODE: Router default 200 response\n' + angular_dist_location);
+  console.log('NODE: Router default 200 response\n' + angular_app_location);
   // serve default file (index.html) for Angular app
-  res.status(200).sendFile('/', {root: angular_dist_location});
+  res.status(200).sendFile('/', {root: angular_app_location});
   //res.send('{ "test_id": 200 }');
 };
 
