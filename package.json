@@ -8,8 +8,8 @@
     "_start": "ts-node server/src/app/server.ts",
     "start": "*** NPM START ***",
     "dev": "nodemon -x ts-node server/src/app/server.ts",
-    "__heroku-predeploy": "echo \"********* HEROKU PREBUILD ***********\" && cd client/heroku-node-test/ && ng build --prod",
-    "heroku-postbuild": "echo \"*********** HEROKU POSTBUILD ***********\" && cd client/heroku-node-test/ && ng build --prod --aot"
+    "__heroku-predeploy": "echo \"********* HEROKU PREBUILD ***********\" && cd client/ && ng build --prod",
+    "heroku-postbuild": "echo \"*********** HEROKU POSTBUILD ***********\" && cd client/ && ng build --prod --aot"
   },
   "repository": {
     "type": "git",
