@@ -2,6 +2,15 @@ import express, { RequestHandler, Request, Response } from 'express';
 import path from 'path';
 import compression from 'compression';
 
+
+import { of } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
+
+const testRxjs: Observable<boolean> = of(false);
+testRxjs.pipe(take(1)).subscribe(val => console.log('************* obsevables work'));
+
+
 const app = express()
 const port: string | number = process.env.PORT || 5000;
 
