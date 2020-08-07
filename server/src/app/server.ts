@@ -7,15 +7,15 @@ import { take } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 
 import mysql, { ConnectionConfig, Connection, QueryOptions, MysqlError, FieldInfo, queryCallback, Pool, PoolConfig } from 'mysql';
-const dbConfig: ConnectionConfig = {
-  host: 'localhost',
-  port: 3306,
-  user: 'DiveMaster',
-  password: 'D1v3M4st3r!!',
-  database: 'dive_inn_test_db',
-}
-const testSql = mysql.createConnection(dbConfig);
-testSql.end();
+// const dbConfig: ConnectionConfig = {
+//   host: 'localhost',
+//   port: 3306,
+//   user: 'DiveMaster',
+//   password: 'D1v3M4st3r!!',
+//   database: 'dive_inn_test_db',
+// }
+// const testSql = mysql.createConnection(dbConfig);
+// testSql.end();
 
 const testRxjs: Observable<boolean> = of(false);
 testRxjs.pipe(take(1)).subscribe(val => console.log('************* obsevables work'));
