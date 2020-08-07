@@ -5,7 +5,7 @@ const app = express()
 const port: string | number = process.env.PORT || 5000;
 
 // running server app from ./server/app or ./server/dist (for prod)
-const angular_app_location = '../../../dist/client/heroku-node-test'; // output from ng build --prod
+const angular_app_location = '../../../dist/client'; // output from ng build --prod
 const angular_dist_location = path.join(__dirname, angular_app_location);
 
 const angular_assets_location = '../../src/assets'; /** @TODO more consistent locations / file structure */
