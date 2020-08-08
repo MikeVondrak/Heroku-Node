@@ -20,6 +20,10 @@
     "url": "https://github.com/MikeVondrak/heroku-node/issues"
   },
   "homepage": "https://github.com/MikeVondrak/heroku-node#readme",
+  "engines": {
+    "node": "12.18.x",
+    "npm": "6.14.x"
+  },
   "dependencies": {
     "@angular-devkit/build-angular": "~0.1000.4",
     "@angular/animations": "~10.0.5",
