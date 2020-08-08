@@ -4,9 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
+
+import { DemoPageComponent } from './pages/demo/demo.page.component';
+import { ConfigurationPageComponent } from './pages/configuration/configuration.page.component';
+import { SelectionPageComponent } from './pages/selection/selection.page.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent,
+    DemoPageComponent,
+    ConfigurationPageComponent,
+    SelectionPageComponent,
   ],
   imports: [
     BrowserModule,
