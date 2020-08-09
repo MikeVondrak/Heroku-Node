@@ -1,10 +1,13 @@
 New TODO
-  1. Create routes and Pages
-    * Header & sticky footer
-  2. Create main navigation
+  1. Create routes and Pages - DONE
+    * Header & sticky footer - DONE
+  2. Create main navigation - DONE
   3. Pre-Angular loading transition
   4. Page load transition / spinner
 
+  * Javascript disabled message / fail page
+  * Browser not supported message / fail page (how to test?) - DONE
+    - https://accounts.lambdatest.com/dashboard / 6 tests of 10 mins per month free
 
 
 ___________________________________
