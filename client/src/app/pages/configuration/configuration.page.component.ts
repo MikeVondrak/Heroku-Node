@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 //import { FontManagerService } from '../../services/font-manager/font-manager.service';
 //import { UiFont, FontListsEnum } from '../../models/ui-font.model';
 import { map } from 'rxjs/operators';
+import { BasePageComponent } from '../base-page/base-page.component';
+import { PageLoadingService } from 'src/app/services/page-loading.service';
 //import { FontClickedPayload } from '../../shared/components/font-list-display/font-list-display.component';
 
 
@@ -11,7 +13,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './configuration.page.component.html',
   styleUrls: ['./configuration.page.component.scss', '../pages-shared.scss']
 })
-export class ConfigurationPageComponent implements OnInit {
+export class ConfigurationPageComponent extends BasePageComponent implements OnInit, AfterViewInit {
 
   // public fontListsEnum = FontListsEnum;
 
@@ -21,8 +23,14 @@ export class ConfigurationPageComponent implements OnInit {
   // public top100Fonts$: Observable<UiFont[]> = this.availableFonts$.pipe(map(f => f.slice(0, 100)));
 
   // constructor(private fontManagerService: FontManagerService) { }
+  constructor(pageLoadingService: PageLoadingService) { 
+    super(pageLoadingService);
+  }
 
   ngOnInit(): void {
+  }
+  ngAfterViewInit(): void {
+    super.ngAfterViewInit();
   }
 
   // public fontClick($event: FontClickedPayload) {

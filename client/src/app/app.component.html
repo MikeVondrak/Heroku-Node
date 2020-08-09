@@ -1,8 +1,9 @@
 <div>Need Header</div>
 <!-- <app-header></app-header> -->
 <app-nav-bar></app-nav-bar>
+page loading: {{loading$ | async}}
 <main class="page-content">
-  <div *ngIf="loading; else pageContent"
+  <div *ngIf="loading$ | async; else pageContent"
     class="page-loading"
   >
     Loading...
