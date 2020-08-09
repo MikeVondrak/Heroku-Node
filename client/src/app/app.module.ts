@@ -9,6 +9,7 @@ import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 import { DemoPageComponent } from './pages/demo/demo.page.component';
 import { ConfigurationPageComponent } from './pages/configuration/configuration.page.component';
 import { SelectionPageComponent } from './pages/selection/selection.page.component';
+import { NotFoundComponent } from './pages/error/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { SelectionPageComponent } from './pages/selection/selection.page.compone
     DemoPageComponent,
     ConfigurationPageComponent,
     SelectionPageComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
