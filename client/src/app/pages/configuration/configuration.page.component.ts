@@ -3,7 +3,6 @@ import { Observable, Subject } from 'rxjs';
 //import { FontManagerService } from '../../services/font-manager/font-manager.service';
 //import { UiFont, FontListsEnum } from '../../models/ui-font.model';
 import { map } from 'rxjs/operators';
-import { BasePageComponent } from '../base-page/base-page.component';
 import { PageLoadingService } from 'src/app/services/page-loading.service';
 //import { FontClickedPayload } from '../../shared/components/font-list-display/font-list-display.component';
 
@@ -13,7 +12,7 @@ import { PageLoadingService } from 'src/app/services/page-loading.service';
   templateUrl: './configuration.page.component.html',
   styleUrls: ['./configuration.page.component.scss', '../pages-shared.scss']
 })
-export class ConfigurationPageComponent extends BasePageComponent implements OnInit, AfterViewInit {
+export class ConfigurationPageComponent implements OnInit, AfterViewInit {
 
   // public fontListsEnum = FontListsEnum;
 
@@ -24,13 +23,11 @@ export class ConfigurationPageComponent extends BasePageComponent implements OnI
 
   // constructor(private fontManagerService: FontManagerService) { }
   constructor(pageLoadingService: PageLoadingService) { 
-    super(pageLoadingService);
   }
 
   ngOnInit(): void {
   }
   ngAfterViewInit(): void {
-    super.ngAfterViewInit();
   }
 
   // public fontClick($event: FontClickedPayload) {

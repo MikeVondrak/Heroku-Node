@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BasePageComponent } from '../base-page/base-page.component';
 import { PageLoadingService } from '../../services/page-loading.service';
 
 @Component({
@@ -8,13 +7,12 @@ import { PageLoadingService } from '../../services/page-loading.service';
   templateUrl: './demo.page.component.html',
   styleUrls: ['./demo.page.component.scss', '../pages-shared.scss']
 })
-export class DemoPageComponent extends BasePageComponent implements OnInit {
+export class DemoPageComponent implements OnInit {
 
   public headerStyle = '';
   public textStyle = '';
 
   constructor(pageLoadingService: PageLoadingService) { 
-    super(pageLoadingService);
   }
 
   ngOnInit(): void {

@@ -2,8 +2,10 @@ New TODO
   1. Create routes and Pages - DONE
     * Header & sticky footer - DONE
   2. Create main navigation - DONE
-  3. Pre-Angular loading transition
+  3. Pre-Angular loading transition - DONE
   4. Page load transition / spinner
+    - observable / service - DONE
+    - UI / prettiness
 
   * Javascript disabled message / fail page
   * Browser not supported message / fail page (how to test?) - DONE

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BasePageComponent } from '../base-page/base-page.component';
 import { PageLoadingService } from 'src/app/services/page-loading.service';
 
 @Component({
@@ -8,10 +7,9 @@ import { PageLoadingService } from 'src/app/services/page-loading.service';
   templateUrl: './selection.page.component.html',
   styleUrls: ['./selection.page.component.scss', '../pages-shared.scss']
 })
-export class SelectionPageComponent extends BasePageComponent implements OnInit {
+export class SelectionPageComponent implements OnInit {
 
   constructor(pageLoadingService: PageLoadingService) { 
-    super(pageLoadingService);
   }
 
   ngOnInit(): void {

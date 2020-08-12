@@ -10,7 +10,7 @@ import { DemoPageComponent } from './pages/demo/demo.page.component';
 import { ConfigurationPageComponent } from './pages/configuration/configuration.page.component';
 import { SelectionPageComponent } from './pages/selection/selection.page.component';
 import { NotFoundComponent } from './pages/error/not-found/not-found.component';
-import { BasePageComponent } from './pages/base-page/base-page.component';
+import { PageLoadingComponent } from './shared/components/page-loading/page-loading.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { BasePageComponent } from './pages/base-page/base-page.component';
     ConfigurationPageComponent,
     SelectionPageComponent,
     NotFoundComponent,
-    BasePageComponent,
+    PageLoadingComponent,
   ],
   imports: [
     BrowserModule,

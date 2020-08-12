@@ -1,16 +1,16 @@
 <div>Need Header</div>
 <!-- <app-header></app-header> -->
 <app-nav-bar></app-nav-bar>
-page loading: {{loading$ | async}}
+
 <main class="page-content">
-  <div *ngIf="loading$ | async; else pageContent"
+  <!-- <div *ngIf="loading$ | async; else pageContent"
     class="page-loading"
   >
     Loading...
   </div>
-  <ng-template #pageContent>
+  <ng-template #pageContent> -->
     <router-outlet></router-outlet>
-  </ng-template>
+  <!-- </ng-template> -->
 </main>
 
 <div>Need Footer</div>
