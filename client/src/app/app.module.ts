@@ -11,6 +11,7 @@ import { ConfigurationPageComponent } from './pages/configuration/configuration.
 import { SelectionPageComponent } from './pages/selection/selection.page.component';
 import { NotFoundComponent } from './pages/error/not-found/not-found.component';
 import { PageLoadingComponent } from './shared/components/page-loading/page-loading.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PageLoadingComponent } from './shared/components/page-loading/page-load
     SelectionPageComponent,
     NotFoundComponent,
     PageLoadingComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
