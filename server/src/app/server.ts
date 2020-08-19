@@ -133,17 +133,30 @@ fontsRouter.post(removeFontRoute, (req: Request, res: Response) => {
   makePoolQuery<DbFont>(removeFontRoute, sqlQueries.removeFont, res, removeFontId);
 });
 
-
-// const testDataRouter = express.Router();
-// testDataRouter.get(routes.api.test, (req: Request, res: Response) => {
-//   console.log('testDataRouter');
-//   makePoolQuery<TestData>(routes.api.test, sqlQueries.selectTestTable, res);
-// });
+interface TestData {
+  id: number,
+  test_char: string,
+  test_null_char: string,
+  test_varchar: string,
+  test_text: string,
+  test_int: number,
+  test_sm_int: number,
+  test_float: number,
+  test_date: Date,
+  test_time: Date,
+  test_timestamp: Date,
+  test_json: JSON
+}
+const testDataRouter = express.Router();
+testDataRouter.get(routes.api.test, (req: Request, res: Response) => {
+  console.log('***** testDataRouter');
+  makePoolQuery<TestData>(routes.api.test, sqlQueries.selectTestTable, res);
+});
 
 const allRoutes = express.Router();
 allRoutes.get(routes.api.other, default200Response);
 
-// controllers.push(testDataRouter);
+controllers.push(testDataRouter);
 controllers.push(fontsRouter);
 controllers.push(allRoutes);
 

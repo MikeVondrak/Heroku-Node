@@ -4,3 +4,8 @@ Heroku
 MySQL add-on for Heroku
   https://devcenter.heroku.com/articles/cleardb
 
+
+
+Commands
+  heroku config:get DATABASE_URL -a <app-name>    # get current DB URL
+  heroku pg:promote <heroku-db-name>              # promote DB to primary (set DATABASE_URL)

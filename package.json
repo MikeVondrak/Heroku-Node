@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon -x ts-node server/src/app/server.ts && cd client && ng serve",
     "start": "ts-node server/src/app/server.ts",
     "dev": "nodemon -x ts-node server/src/app/server.ts",
     "__heroku-predeploy": "echo \"********* HEROKU PREBUILD ***********\" && cd client/ && ng build --prod",

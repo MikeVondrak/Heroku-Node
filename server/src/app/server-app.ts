@@ -15,6 +15,13 @@ export class ServerApp {
     password: 'D1v3M4st3r!!',
     database: 'dive_inn_test_db',
   };
+  private readonly herokuDbConfig: ConnectionConfig = {
+    host: 'ec2-34-195-115-225.compute-1.amazonaws.com',
+    port: 5432,
+    user: 'gjdceezcnugnyv',
+    password: '01830a0a446a61701aee908b0c6443262b943703339bd17bc7a6823f70cddc11',
+    database: 'd125dfl39tajfu'
+  }
 
   constructor(
     private angularAppLocation: string = '',
@@ -25,7 +32,14 @@ export class ServerApp {
   ) {
     this.app = express(); // create a new express application instance
     this.port = process.env.PORT ? process.env.PORT : this.port; // process.env.PORT set by Heroku
+    
+
+
     this.pool = this.createPool(this.dbConfig);
+    //this.pool = this.createPool(this.herokuDbConfig);
+
+
+
 
     // first to match route takes precedence,  static > middleware > controllers
     // '/' defaults to index.html from Express settings
