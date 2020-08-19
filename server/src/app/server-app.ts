@@ -34,12 +34,14 @@ export class ServerApp {
     this.port = process.env.PORT ? process.env.PORT : this.port; // process.env.PORT set by Heroku
     
 
-
-    this.pool = this.createPool(this.dbConfig);
-    //this.pool = this.createPool(this.herokuDbConfig);
-
-
-
+    if (process.env.NODE_ENV === 'production') {
+      console.log('DB connection:\t\tHEROKU');
+      this.pool = this.createPool(this.herokuDbConfig);
+    } else {
+      console.log('DB connection:\t\tLOCAL');
+      this.pool = this.createPool(this.dbConfig);
+    }
+    
 
     // first to match route takes precedence,  static > middleware > controllers
     // '/' defaults to index.html from Express settings
