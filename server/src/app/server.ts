@@ -11,7 +11,7 @@ import path from 'path';
 import { take } from 'rxjs/operators';
 
 // our backend
-import { ServerApp } from './server-app';
+import { ServerApp } from './server-app-postgres';
 //import { logger } from './middleware/logger';
 import { sqlQueries } from './sql-queries';
 import { routes, FontGroupEnum } from './routes';
