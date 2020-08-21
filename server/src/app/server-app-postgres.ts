@@ -27,7 +27,7 @@ import { Observable, Observer } from 'rxjs';
 // client.query('SELECT NOW()', (err, res) => {
 //   console.log(err, res)
 //   client.end()
-// })
+// })  
 
 
 export class ServerApp {
@@ -36,9 +36,9 @@ export class ServerApp {
   private readonly dbConfig: Pool = new Pool({
     host: 'localhost',
     port: 5432,
-    user: 'DiveMaster',
-    password: 'D1v3M4st3r!!',
-    database: 'dive_inn_test_db',
+    user: 'postgres',
+    password: 'D1v31nnD4t4!?',
+    database: 'postgres ',
   });
   private readonly herokuDbConfig: Pool = new Pool({
     host: 'ec2-34-195-115-225.compute-1.amazonaws.com',
