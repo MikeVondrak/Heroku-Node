@@ -1,31 +1,56 @@
 // https://dev.to/aligoren/developing-an-express-application-using-typescript-3b1
 
 import express, { Application, Request, Response, NextFunction, RequestHandler, Router } from 'express';
-import mysql, { ConnectionConfig, Connection, QueryOptions, MysqlError, FieldInfo, queryCallback, Pool, PoolConfig } from 'mysql';
+import { Client, Pool, Query, QueryConfig, QueryResult } from 'pg';
 import { routes } from './routes';
 import { Observable, Observer } from 'rxjs';
+
+// const pool = new Pool({
+//   user: 'dbuser',
+//   host: 'database.server.com',
+//   database: 'mydb',
+//   password: 'secretpassword',
+//   port: 3211,
+// })
+// pool.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res)
+//   pool.end()
+// })
+// const client = new Client({
+//   user: 'dbuser',
+//   host: 'database.server.com',
+//   database: 'mydb',
+//   password: 'secretpassword',
+//   port: 3211,
+// })
+// client.connect()
+// client.query('SELECT NOW()', (err, res) => {
+//   console.log(err, res)
+//   client.end()
+// })
+
 
 export class ServerApp {
   private app: Application;
   private pool: Pool;
-  private readonly dbConfig: ConnectionConfig = {
+  private readonly dbConfig: Pool = new Pool({
     host: 'localhost',
-    port: 3306,
+    port: 5432,
     user: 'DiveMaster',
     password: 'D1v3M4st3r!!',
     database: 'dive_inn_test_db',
-  };
-  private readonly herokuDbConfig: ConnectionConfig = {
+  });
+  private readonly herokuDbConfig: Pool = new Pool({
     host: 'ec2-34-195-115-225.compute-1.amazonaws.com',
     port: 5432,
     user: 'gjdceezcnugnyv',
     password: '01830a0a446a61701aee908b0c6443262b943703339bd17bc7a6823f70cddc11',
     database: 'd125dfl39tajfu'
-  }
+  });
 
   constructor(
     private angularAppLocation: string = '',
-    private port: string = '3000',
+    private port: string = '5432',
     private staticPathList: string[],
     private middleWareList: RequestHandler[],
     private controllerList: Router[]
@@ -36,10 +61,12 @@ export class ServerApp {
 
     if (process.env.NODE_ENV === 'production') {
       console.log('DB connection:\t\tHEROKU');
-      this.pool = this.createPool(this.herokuDbConfig);
+      this.pool = this.herokuDbConfig;
+      //this.pool = this.createPool(this.herokuDbConfig);
     } else {
       console.log('DB connection:\t\tLOCAL');
-      this.pool = this.createPool(this.dbConfig);
+      this.pool = this.dbConfig;
+      //this.pool = this.createPool(this.dbConfig);
     }
     
 
@@ -108,13 +135,13 @@ export class ServerApp {
     });
   }
 
-  private createPool(dbConfig: ConnectionConfig, poolSize: number = 20): Pool {
-    const poolConfig: PoolConfig = {
-      connectionLimit: poolSize,
-      ...dbConfig
-    };
-    return mysql.createPool(poolConfig);
-  }
+  // private createPool(dbConfig: ConnectionConfig, poolSize: number = 20): Pool {
+  //   const poolConfig: PoolConfig = {
+  //     connectionLimit: poolSize,
+  //     ...dbConfig
+  //   };
+  //   return mysql.createPool(poolConfig);
+  // }
 
   /**
    * Query using pool, automatically aquires and releases connection to db
@@ -122,28 +149,25 @@ export class ServerApp {
    * @param sqlQuery SQL query string
    * @returns Observable of array of provided type, containing query results
    */
-  // public poolQuery<T>(sqlQuery: string, callback: queryCallback): void {
   public poolQuery<T>(sqlQuery: string, values?: any): Observable<T[]> {
 
     const queryResult$ = (observer: Observer<T[]>) => {
-
-      const queryOptions: QueryOptions = {
-        sql: sqlQuery,
+      
+      const queryConfig: QueryConfig = {
+        text: sqlQuery,
+        values: values
       };
 
-      const responseCallback: queryCallback = (err: MysqlError | null, rows: T[], fields: FieldInfo[] | undefined) => {
+      const responseCallback = (err: Error, result: QueryResult) => {
         if (err) {
           observer.error(err);
         }
-        observer.next(rows);
+        const typedResult: T[] = result.rows;
+        observer.next(typedResult);
         observer.complete();
       };
-
-      if (values) {
-        this.pool.query(queryOptions, values, responseCallback);
-      } else {
-        this.pool.query(queryOptions, responseCallback);
-      }
+      
+      this.pool.query(queryConfig, responseCallback);      
     };
 
     return new Observable<T[]>(queryResult$);
@@ -153,8 +177,8 @@ export class ServerApp {
   // Not sure we need to explicitly disconnet or do any cleanup?
   // Theoretically Node/Express "should never stop running"
   // can attach an event handler to process.on('exit', () => {})
-  public disconnectDb(connection: Connection) {
-    connection.end();
-  }
+  // public disconnectDb(connection: Connection) {
+  //   connection.end();
+  // }
   
 }

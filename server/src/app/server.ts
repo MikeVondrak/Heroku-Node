@@ -64,12 +64,12 @@ const default200Response: RequestHandler = (req: Request, res: Response) => {
  * @param query SQL query to make
  * @param res Response object from Express Router
  */
-function makePoolQuery<returnType>(route: string, query: string, res: Response, values?: any) {
-  console.log('**** makePoolQuery: route= ' + route + ', query= ' + query + ', data= ' + JSON.stringify(values,null,4) || 'none');
-  serverApp.poolQuery<returnType>(query, values)
+function makePoolQuery<ReturnType>(route: string, query: string, res: Response, values?: any) {
+  console.log('***** makePoolQuery: route= ' + route + ', query= ' + query + ', data= ' + JSON.stringify(values,null,4) || 'none');
+  serverApp.poolQuery<ReturnType>(query, values)
     .pipe(take(1))
     .subscribe(
-      (results: returnType[]) => {
+      (results: ReturnType[]) => {
         res.send(results);
       },
       (err: string) => {
