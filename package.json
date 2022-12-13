@@ -48,7 +48,7 @@
     "@types/snapsvg": "^0.5.0",
     "codelyzer": "^6.0.0",
     "compression": "^1.7.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
